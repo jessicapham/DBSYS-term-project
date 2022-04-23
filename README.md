@@ -37,7 +37,7 @@ If first time running, give execution permission to the script:
 This project uses code from other Git repositories. Git submodules is used to keep a git repository as a subdirectory of another git repository. 
 
 ### Current submodules
-- JSQLPraser
+- JSQLParser
 
 ### To add a submodule:
 ```
