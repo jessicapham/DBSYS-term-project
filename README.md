@@ -1,7 +1,8 @@
 
-# UT CS386D Database Systems Term Project
+# Database Systems Term Project
 ## Measuring the Width of a Join Graph for (Graph) Queries 
-This repo contains our research project for the Mobile Computing course at UT Austin.
+
+This repo contains our term project for the Database Systems course at UT Austin.
 
 ---
 
@@ -30,3 +31,15 @@ cd project/
 
 If first time running, give execution permission to the script:
 `chmod +x run.sh`
+
+# Miscellaneous
+## Git Submodules
+This project uses code from other Git repositories. Git submodules is used to keep a git repository as a subdirectory of another git repository. 
+
+### Current submodules
+- JSQLPraser
+
+### To add a submodule:
+```
+git submodule add <repository URL>
+```
