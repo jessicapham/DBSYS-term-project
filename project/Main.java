@@ -37,7 +37,7 @@ public class Main {
 		try { 
             String query = "";
             try {
-                File myObj = new File("sql.txt");
+                File myObj = new File("sql2.txt");
                 Scanner myReader = new Scanner(myObj);
     
                 while (myReader.hasNextLine()) {
@@ -94,11 +94,13 @@ public class Main {
             Collection<Expression> expressions = j.getOnExpressions();
 
             for (Expression expr: expressions){
-                expr.accept(visitor);
+                if (expr != null)
+                    expr.accept(visitor);
             }
         }
 
-        where.accept(visitor);
+        if (where != null)
+            where.accept(visitor);
 
 
         System.out.println(sch);
