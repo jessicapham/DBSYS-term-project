@@ -103,7 +103,7 @@ public class Main {
             where.accept(visitor);
 
 
-        System.out.println(sch);
+        sch.genPrimalGraph();
     }
 }
 

@@ -1,4 +1,11 @@
 import java.util.*;
+import java.io.*;
+import java.net.*;
+
+import org.jgrapht.*;
+import org.jgrapht.graph.*;
+import org.jgrapht.traverse.*;
+import org.jgrapht.nio.dimacs.*;
 
 public class Schema {
     ArrayList<Table> tables;
@@ -88,6 +95,48 @@ public class Schema {
             return;
         }
     }
+
+    void genPrimalGraph() {
+        String[] rels = this.toString().split("\\n");
+		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
+
+        for (String r: rels) {
+            addVertices(r, g);
+        }
+
+        System.out.println("\n============ RENAMED ARGS ============\n");
+        System.out.println(this);
+
+
+        System.out.println("\n============ PRIMAL GRAPH ============\n");
+        
+        for (String v : g.vertexSet()) {
+			System.out.println("vertex: " + v);
+		}
+
+		for (DefaultEdge e : g.edgeSet()) {
+			System.out.println("edge: " + e);
+        }
+
+        System.out.println("\n============ DIMACS REPRESENTATION ============\n");
+
+        DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
+		Writer wr = new PrintWriter(System.out);
+		de.exportGraph(g, wr);
+        
+    }
+
+    void addVertices(String r, Graph<String, DefaultEdge> g) {
+		String[] vs = r.split("\\(|\\)")[1].split(",");
+
+		for (int i = 0; i < vs.length; i++) {
+			for (int j = i+1; j < vs.length; j++) {
+				g.addVertex(vs[i].strip());
+				g.addVertex(vs[j].strip());
+				g.addEdge(vs[i].strip(), vs[j].strip());
+			}
+		}
+	}
 
     @Override
     public String toString() {
