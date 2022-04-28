@@ -43,3 +43,6 @@ This project uses code from other Git repositories. Git submodules is used to ke
 ```
 git submodule add <repository URL>
 ```
+
+## Graph File Formatting
+http://prolland.free.fr/works/research/dsat/dimacs.html

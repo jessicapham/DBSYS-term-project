@@ -22,7 +22,11 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		try {
 
-			String selectSQL = "SELECT  a,  b FROM  mytable WHERE a > 10 AND b > 100";
+			String selectSQL = "SELECT count(*)" +
+                " FROM Person_knows_Person" +
+                " JOIN Comment ON Person_knows_Person.Person1Id = Comment.hasCreator_Person" + 
+                " JOIN Post ON Person_knows_Person.Person2Id = Post.hasCreator_Person" +
+                " AND Comment.replyOf_Post = Post.id";
 
             traverseASTNodes(selectSQL);
 	
@@ -34,18 +38,42 @@ public class Main {
     public static void traverseASTNodes(String sql) throws JSQLParserException {
         SimpleNode node = (SimpleNode) CCJSqlParserUtil.parseAST(sql);
         
-        System.out.println("----- NODE DUMP -----");
+        System.out.println("---------- NODE DUMP ----------");
         node.dump("*");
 
         System.out.println("\n");
-        System.out.println("----- VISITING NODES -----");
-        node.jjtAccept(new CCJSqlParserDefaultVisitor() {
+        System.out.println("---------- VISITING NODES ----------");
+        CCJSqlParserDefaultVisitor visitor = new CCJSqlParserDefaultVisitor() {
+            int count = 0;
+
             @Override
             public Object visit(SimpleNode node, Object data) {
-                System.out.println("node: " + node.toString() + " --- value: " + node.jjtGetValue() + " --- num children: " + node.jjtGetNumChildren());
+                if (node.toString() == "JoinerExpression") {
+                    System.out.println("- Join Expression");
+                }
+
+                if (node.toString() == "RegularCondition") {
+                    System.out.println("--- Condition in Join Expression");
+                    count += 1;
+                }
+
+                if (node.toString() == "Column") {
+                    System.out.println("join attr " + count + ": " + node.jjtGetValue());
+                }
+
+                if (node.toString() == "Table") {
+                    System.out.println("table: " + node.jjtGetValue());
+                }
+                
+                if (node.toString() == "SelectItem") {
+                    System.out.println("select item: " + node.jjtGetValue());
+                }
+
                 return super.visit(node, data);
             }
-        }, null);
+        };
+
+        node.jjtAccept(visitor, null);
     }
 }
 
