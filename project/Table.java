@@ -30,6 +30,10 @@ public class Table {
         return name;
     }
 
+    ArrayList<Column> getAllColumns() {
+        return columns;
+    }
+
     @Override
     public String toString() {
         String res = name + "(";

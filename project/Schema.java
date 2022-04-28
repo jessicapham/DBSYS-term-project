@@ -40,6 +40,20 @@ public class Schema {
         return t.getColumn(colName);
     }
 
+    public ArrayList<Column> getColumnsWithAlias(int a) {
+        ArrayList<Column> cols = new ArrayList<Column>();
+
+        for (Table tab: tables) {
+            for (Column c: tab.getAllColumns()) {
+                if (c.getAlias() == a) {
+                    cols.add(c);
+                }
+            }
+        }
+
+        return cols;
+    }
+
     public void addAlias(String left, String right) {
         String[] ls = left.split("\\.");
         String[] rs = right.split("\\.");
@@ -50,18 +64,24 @@ public class Schema {
             int lal = lCol.getAlias();
             int ral = rCol.getAlias();
 
-            if (lal > 0) {
+            if (lal > 0 && ral == 0) {
                 rCol.setAlias((lal));
-                return;
-            }
-            else if (ral > 0) {
+            } else if (lal > 0 && ral > 0) {
+                ArrayList<Column> cols = getColumnsWithAlias(ral);
+                for (Column col: cols) {
+                    col.setAlias(lal);
+                }
+            } else if (ral > 0 && lal == 0) {
                 lCol.setAlias(ral);
-                return;
+            } else if(ral > 0 && lal > 0) {
+                ArrayList<Column> cols = getColumnsWithAlias(lal);
+                for (Column col: cols) {
+                    col.setAlias(lal);
+                }
             } else {
                 rCol.setAlias(counter);
                 lCol.setAlias(counter);
                 counter++;
-                return;
             }
         } catch (Exception e) {
             System.out.println(e);
