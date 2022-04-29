@@ -2,26 +2,27 @@ import java.util.*;
 
 public class Table {
     String name;
-    ArrayList<Column> columns;
+    String orgName;
+    Boolean aliased;
+    HashMap<String, Column> columns;
 
-    Table(String n) {
+    Table(String n, Boolean a, String o) {
         name = n;
-        columns = new ArrayList<Column>();
+        aliased = a;
+        orgName = o;
+        columns = new HashMap<String, Column>();
     }
 
     public void addColumn(String c) {
-        for (Column col: columns) {
-            if (col.getName().equals(c)) return;
-        }
+        if (columns.get(c) != null) return;
 
         Column col = new Column(c);
-        columns.add(col);
+        columns.put(c, col);
     }
 
     public Column getColumn(String c) throws Exception {
-        for (Column col: columns) {
-            if (col.getName().equals(c)) return col;
-        }
+        Column col = columns.get(c);
+        if(col != null) return col;
 
         throw new Exception("Col: " + c + " does not belong to table " + name);
     }
@@ -30,16 +31,26 @@ public class Table {
         return name;
     }
 
-    ArrayList<Column> getAllColumns() {
-        return columns;
+    Collection<Column> getAllColumns() {
+        return columns.values();
+    }
+
+    Boolean isAliased() {
+        return aliased;
+    }
+
+    String getOrgTableName() {
+        return orgName;
     }
 
     @Override
     public String toString() {
         String res = name + "(";
-        for (int i = 0; i < columns.size(); i++) {
-            res += columns.get(i).getAlias();
-            if (i != columns.size() - 1) res += ", ";
+        Collection<Column> cols = columns.values();
+        int i = 0;
+        for (Column c: cols) {
+            res += c.getAlias();
+            if(i++ != cols.size() - 1) res += ", ";
         }
         res += ")";
         return res;

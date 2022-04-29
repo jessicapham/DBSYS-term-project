@@ -8,6 +8,7 @@ import net.sf.jsqlparser.parser.SimpleNode;
 import net.sf.jsqlparser.schema.Table;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.statement.Statement;
+import net.sf.jsqlparser.statement.Statements;
 import net.sf.jsqlparser.statement.StatementVisitorAdapter;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.AllTableColumns;
@@ -20,6 +21,8 @@ import net.sf.jsqlparser.statement.select.OrderByElement;
 import net.sf.jsqlparser.statement.select.SelectBody;
 import net.sf.jsqlparser.statement.select.SelectVisitorAdapter;
 import net.sf.jsqlparser.statement.select.SelectItemVisitorAdapter;
+import net.sf.jsqlparser.statement.create.table.CreateTable;
+import net.sf.jsqlparser.statement.create.table.ColumnDefinition;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.ExpressionVisitorAdapter;
 import net.sf.jsqlparser.expression.BinaryExpression;
@@ -35,31 +38,42 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		try { 
-            String query = "";
-            try {
-                String input = "../" + args[0];
-                File myObj = new File(input);
-                Scanner myReader = new Scanner(myObj);
-    
-                while (myReader.hasNextLine()) {
-                    query += myReader.nextLine() + " ";
-                }
-                myReader.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
+            String schemaString = readFile("../" + args[0]);
+            String query = readFile("../" + args[1]);
 
-            traverseASTNodes(query);
+            traverseASTNodes(query, schemaString);
 	
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-    public static void traverseASTNodes(String sql) throws JSQLParserException, FileNotFoundException {
+    public static String readFile(String fname) {
+        String res = "";
+        try {
+            File myObj = new File(fname);
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine()) {
+                res += myReader.nextLine() + " ";
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    public static void traverseASTNodes(String sql, String schemaString) throws JSQLParserException, FileNotFoundException {
+
+
         SimpleNode node = (SimpleNode) CCJSqlParserUtil.parseAST(sql);
+        Schema orgSchema = new Schema();
         Schema sch = new Schema();
+        
+        createOrgSchema(orgSchema, schemaString);
 
         node.jjtAccept(new CCJSqlParserDefaultVisitor() {
             @Override
@@ -103,8 +117,29 @@ public class Main {
         if (where != null)
             where.accept(visitor);
 
-
+        sch.addMissingArgs(orgSchema);
         sch.genPrimalGraph();
+    }
+
+    public static void createOrgSchema(Schema sch, String schemaString) {
+        try {
+            Statements schemaStmts = CCJSqlParserUtil.parseStatements(schemaString);
+            for (Statement schemaStmt : schemaStmts.getStatements()) {
+                try {
+                    CreateTable tbl = (CreateTable) schemaStmt;
+    
+                    String tableName = tbl.getTable().getName().toLowerCase();
+                    LinkedList<String> attributes = new LinkedList<>();
+                    for (ColumnDefinition cdef : tbl.getColumnDefinitions()) {
+                        sch.addColumn(tableName + "." + cdef.getColumnName().toLowerCase());
+                    }
+                } catch (ClassCastException c) {
+                    System.err.println("\"" + schemaStmt + "\" is not a CREATE statement.");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
 

@@ -9,28 +9,35 @@ import org.jgrapht.nio.dimacs.*;
 
 public class Schema {
     final String FILE_PATH = "../dimacs.graph";
-    ArrayList<Table> tables;
+    HashMap<String, Table> tables;
     int counter = 1;
 
     Schema() {
-        tables = new ArrayList<Table>();
+        tables = new HashMap<String, Table>();
     }
 
     public void addTable(String t) {
+        String tabName = "";
+        String orgName = "";
+
         String[] tsplit = t.split(" as | ");
-        if (tsplit.length == 2) t = tsplit[1].strip();
-        for (Table tab: tables) {
-            if (tab.getName().equals(t)) {return;}
+        if (tsplit.length == 2) {
+            tabName = tsplit[1].strip();
+            orgName = tsplit[0].strip();
+        } else {
+            tabName = t;
         }
+
+        if (tables.get(tabName) != null) return;
         
-        Table tab = new Table(t);
-        tables.add(tab);
+        Table tab = new Table(tabName, tsplit.length == 2, orgName);
+
+        tables.put(tabName, tab);
     }
 
     Table getTable(String t) {
-        for (Table tab: tables) {
-            if (tab.getName().equals(t)) return tab;
-        }
+        Table tab = tables.get(t);
+        if (tab != null) return tab;
 
         addTable(t);
         return getTable(t);
@@ -51,7 +58,7 @@ public class Schema {
     public ArrayList<Column> getColumnsWithAlias(int a) {
         ArrayList<Column> cols = new ArrayList<Column>();
 
-        for (Table tab: tables) {
+        for (Table tab: tables.values()) {
             for (Column c: tab.getAllColumns()) {
                 if (c.getAlias() == a) {
                     cols.add(c);
@@ -97,7 +104,34 @@ public class Schema {
         }
     }
 
+    void addMissingArgs(Schema sch) {
+        Collection<Table> tabs = tables.values();
+
+        for (Table t: tabs) {
+            String orgTabName = t.getName();
+            if (t.isAliased()) orgTabName = t.getOrgTableName();
+
+            for (Column c: sch.getAllTableColumns(orgTabName)){
+                t.addColumn(c.getName());
+            }
+        }
+    }
+
+    Collection<Column> getAllTableColumns(String tab) {
+        Table t = tables.get(tab);
+        Collection<Column> res = Collections.emptyList();
+        
+        if (t != null) res = t.getAllColumns();
+        return res;
+    }
+
     void genPrimalGraph() throws FileNotFoundException {
+        //Assign random vals to the columns not in query
+        for (Table t: tables.values()) {
+            for (Column c: t.getAllColumns()) {
+                if (c.getAlias() == 0) c.setAlias(counter++);
+            }
+        }
         String[] rels = this.toString().split("\\n");
 		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
 
@@ -105,9 +139,9 @@ public class Schema {
             addVertices(r, g);
         }
 
-        /*
         System.out.println("\n============ RENAMED ARGS ============\n");
         System.out.println(this);
+        /*
 
         System.out.println("\n============ PRIMAL GRAPH ============\n");
         
@@ -147,7 +181,7 @@ public class Schema {
     @Override
     public String toString() {
         String res = "";
-        for (Table t: tables) {
+        for (Table t: tables.values()) {
             res += t.toString() + "\n";
         }
         return res;
