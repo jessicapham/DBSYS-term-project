@@ -21,6 +21,13 @@ mvn package
 
 This will produce a `jsqlparser-VERSION.jar` file in the `target/` directory which is used by the project code to parse queries into an AST.
 
+
+### **Download jgrapht-1.5.1**
+https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgrapht-1.5.1.tar.gz
+
+Untar and place in the projects root directory.
+
+
 # Running the Project
 ### **Parser**
 From the root directory:
