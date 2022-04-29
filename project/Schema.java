@@ -8,6 +8,7 @@ import org.jgrapht.traverse.*;
 import org.jgrapht.nio.dimacs.*;
 
 public class Schema {
+    final String FILE_PATH = "../dimacs.graph";
     ArrayList<Table> tables;
     int counter = 1;
 
@@ -96,7 +97,7 @@ public class Schema {
         }
     }
 
-    void genPrimalGraph() {
+    void genPrimalGraph() throws FileNotFoundException {
         String[] rels = this.toString().split("\\n");
 		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
 
@@ -121,8 +122,11 @@ public class Schema {
         System.out.println("\n============ DIMACS REPRESENTATION ============\n");
 
         DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
-		Writer wr = new PrintWriter(System.out);
+		File file = new File(FILE_PATH);
+        Writer wr = new PrintWriter(file);
 		de.exportGraph(g, wr);
+
+        System.out.println("See " + FILE_PATH + "\n");
         
     }
 
