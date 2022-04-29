@@ -26,3 +26,6 @@
 
 # Java class files
 *.class
+
+# Dimacs graph files
+*.graph

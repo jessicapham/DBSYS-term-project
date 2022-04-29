@@ -1,3 +1,6 @@
 [submodule "JSqlParser"]
 	path = JSqlParser
 	url = https://github.com/JSQLParser/JSqlParser.git
+[submodule "Triangulator"]
+	path = Triangulator
+	url = https://github.com/Laakeri/Triangulator.git

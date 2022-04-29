@@ -26,14 +26,16 @@ This will produce a `jsqlparser-VERSION.jar` file in the `target/` directory whi
 https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgrapht-1.5.1.tar.gz
 
 Untar and place in the projects root directory.
-
+```
+wget https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgrapht-1.5.1.tar.gz
+tar -xvzf jgrapht-1.5.1.tar.gz
+```
 
 # Running the Project
 ### **Parser**
 From the root directory:
 ```
-cd project/
-./run.sh
+./run.sh <path to query file from root>
 ```
 
 If first time running, give execution permission to the script:

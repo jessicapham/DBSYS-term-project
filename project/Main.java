@@ -37,7 +37,8 @@ public class Main {
 		try { 
             String query = "";
             try {
-                File myObj = new File("sql2.txt");
+                String input = "../" + args[0];
+                File myObj = new File(input);
                 Scanner myReader = new Scanner(myObj);
     
                 while (myReader.hasNextLine()) {
@@ -56,7 +57,7 @@ public class Main {
 		}
 	}
 
-    public static void traverseASTNodes(String sql) throws JSQLParserException {
+    public static void traverseASTNodes(String sql) throws JSQLParserException, FileNotFoundException {
         SimpleNode node = (SimpleNode) CCJSqlParserUtil.parseAST(sql);
         Schema sch = new Schema();
 
