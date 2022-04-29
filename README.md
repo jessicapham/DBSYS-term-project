@@ -37,15 +37,26 @@ cd Triangulator/
 make
 ```
 
-# Running the Project
-### **Parser**
+# Usage
 From the root directory:
 ```
-./run.sh <path to query file from root>
+./run.sh <path to query file from root or a benchmark directory>
 ```
 
 If first time running, give execution permission to the script:
 `chmod +x run.sh`
+
+### **Examples**
+To compute treewidth for one query:
+```
+./run.sh job/1a.sql 
+```
+To compute treewidth for all queries in a benchmark:
+```
+./run.sh job
+```
+
+Currently supports benchmark: `lsqb`, `job`, `tpc-h`
 
 # Miscellaneous
 ## Git Submodules

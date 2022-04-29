@@ -105,9 +105,9 @@ public class Schema {
             addVertices(r, g);
         }
 
+        /*
         System.out.println("\n============ RENAMED ARGS ============\n");
         System.out.println(this);
-
 
         System.out.println("\n============ PRIMAL GRAPH ============\n");
         
@@ -118,15 +118,17 @@ public class Schema {
 		for (DefaultEdge e : g.edgeSet()) {
 			System.out.println("edge: " + e);
         }
-
-        System.out.println("\n============ DIMACS REPRESENTATION ============\n");
+        
+        //System.out.println("\n============ DIMACS REPRESENTATION ============\n");
+        System.out.println("See " + FILE_PATH + "\n");
+        */
 
         DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
 		File file = new File(FILE_PATH);
         Writer wr = new PrintWriter(file);
 		de.exportGraph(g, wr);
 
-        System.out.println("See " + FILE_PATH + "\n");
+        
         
     }
 

@@ -8,12 +8,35 @@ fi
 
 if [ $# -eq 0 ]
   then
-    echo "No query input file provided."
+    echo "No query file or benchmark directory specified."
     exit 0
 fi
 
-cd project/
-./run_project.sh "$@"
+BENCHMARK=""
 
-cd ../Triangulator
-./main -treewidth < ../dimacs.graph
+cd project/
+
+if [[ "$1" == "lsqb" ]]; then
+    BENCHMARK="../lsqb/*.sql"
+fi
+
+if [[ "$1" == "tpc-h" ]]; then
+    BENCHMARK="../tpc-h/*.sql"
+fi
+
+if [[ "$1" == "job" ]]; then
+    BENCHMARK="../job/*.sql"
+fi
+
+
+if [[ "$BENCHMARK" != "" ]]; then
+    for FILE in $BENCHMARK; 
+        do echo "---------- Computing treewidth for query:" $FILE "----------"; 
+        ./run_project.sh "lsqb/$FILE"
+        ../Triangulator/main -treewidth < ../dimacs.graph
+        rm ../dimacs.graph
+    done
+fi
+
+./run_project.sh "$@"
+../Triangulator/main -treewidth < ../dimacs.graph
