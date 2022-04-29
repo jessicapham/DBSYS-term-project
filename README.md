@@ -31,6 +31,12 @@ wget https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgra
 tar -xvzf jgrapht-1.5.1.tar.gz
 ```
 
+### **Build Triangulator Algo**
+```
+cd Triangulator/
+make
+```
+
 # Running the Project
 ### **Parser**
 From the root directory:
