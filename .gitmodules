@@ -4,3 +4,6 @@
 [submodule "Triangulator"]
 	path = Triangulator
 	url = https://github.com/Laakeri/Triangulator.git
+[submodule "front-end"]
+	path = front-end
+	url = https://github.com/opencypher/front-end.git
