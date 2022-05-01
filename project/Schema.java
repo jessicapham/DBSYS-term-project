@@ -8,7 +8,8 @@ import org.jgrapht.traverse.*;
 import org.jgrapht.nio.dimacs.*;
 
 public class Schema {
-    final String FILE_PATH = "../dimacs.graph";
+    final String FILE_PATH_PG = "../dimacs_pg.graph";
+    final String FILE_PATH_JG = "../dimacs_jg.graph";
     HashMap<String, Table> tables;
     int counter = 1;
 
@@ -139,8 +140,8 @@ public class Schema {
             addVertices(r, g);
         }
 
-        System.out.println("\n============ RENAMED ARGS ============\n");
-        System.out.println(this);
+        // System.out.println("\n============ RENAMED ARGS ============\n");
+        // System.out.println(this);
         /*
 
         System.out.println("\n============ PRIMAL GRAPH ============\n");
@@ -157,13 +158,7 @@ public class Schema {
         System.out.println("See " + FILE_PATH + "\n");
         */
 
-        DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
-		File file = new File(FILE_PATH);
-        Writer wr = new PrintWriter(file);
-		de.exportGraph(g, wr);
-
-        
-        
+        graphExporter(g, FILE_PATH_PG);
     }
 
     void addVertices(String r, Graph<String, DefaultEdge> g) {
@@ -177,6 +172,48 @@ public class Schema {
 			}
 		}
 	}
+
+    void genJoinGraph() throws FileNotFoundException {
+        //Assign random vals to the columns not in query
+        for (Table t: tables.values()) {
+            for (Column c: t.getAllColumns()) {
+                if (c.getAlias() == 0) c.setAlias(counter++);
+            }
+        }
+
+		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
+
+        for (Table t: tables.values()) {
+            for (Table tbar: tables.values()) {
+                if (t.getName() == tbar.getName()) continue;
+
+                if (t.containsTableColumn(tbar)) {
+                    g.addVertex(t.getName().strip());
+				    g.addVertex(tbar.getName().strip());
+				    g.addEdge(t.getName(), tbar.getName());
+                }
+            }
+        }
+
+        // System.out.println("\n============ JOIN GRAPH ============\n");
+        
+        // for (String v : g.vertexSet()) {
+		// 	System.out.println("vertex: " + v);
+		// }
+
+		// for (DefaultEdge e : g.edgeSet()) {
+		// 	System.out.println("edge: " + e);
+        // }  
+        
+        graphExporter(g, FILE_PATH_JG);
+    }
+
+    void graphExporter(Graph<String, DefaultEdge> g, String fp) throws FileNotFoundException {
+        DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
+		File file = new File(fp);
+        Writer wr = new PrintWriter(file);
+		de.exportGraph(g, wr);
+    }
 
     @Override
     public String toString() {

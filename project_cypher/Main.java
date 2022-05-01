@@ -32,7 +32,7 @@ public class Main {
             String query6 = "MATCH (:Tag)<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]-( creator:Person) OPTIONAL MATCH (message)<-[:LIKES]-(liker:Person) OPTIONAL MATCH (message)<-[:REPLY_OF]-(comment:Comment) RETURN count(*) AS count";
             String query7Broken = "MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF ]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag) WHERE NOT (comment)-[:HAS_TAG]->(tag1) AND tag1 <> tag2 RETURN count(*) AS count";
             
-            traverseASTNodes(query2);
+            traverseASTNodes(query7Broken);
 
 	
 		} catch (Exception e) {

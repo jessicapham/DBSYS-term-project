@@ -119,6 +119,7 @@ public class Main {
 
         sch.addMissingArgs(orgSchema);
         sch.genPrimalGraph();
+        sch.genJoinGraph();
     }
 
     public static void createOrgSchema(Schema sch, String schemaString) {

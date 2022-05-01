@@ -2,12 +2,15 @@
 
 chmod +x ./project/run_project.sh
 
-if [ -f "dimacs.graph" ]; then
-    rm dimacs.graph
+if [ -f "dimacs_pg.graph" ]; then
+    rm dimacs_pg.graph
 fi
 
-if [ $# -eq 0 ]
-  then
+if [ -f "dimacs_jg.graph" ]; then
+    rm dimacs_jg.graph
+fi
+
+if [ $# -eq 0 ]; then
     echo "No query file or benchmark directory specified."
     exit 0
 fi
@@ -36,14 +39,17 @@ fi
 
 
 if [[ "$BENCHMARK" != "" ]]; then
-    for FILE in $BENCHMARK; 
-        do echo "---------- Computing treewidth for query:" $FILE "----------"; 
-        ./run_project.sh "$SCHEMA" "lsqb/$FILE"
-        ../Triangulator/main -treewidth < ../dimacs.graph
-        rm ../dimacs.graph
+    for FILE in $BENCHMARK; do
+        echo "---------- Computing treewidth for query:" $FILE "----------"
+        ./run_project.sh "$SCHEMA" "$1/$FILE"
+        echo "---------- Primal Graph: tw(H) ----------\n"
+        ../Triangulator/main -treewidth < ../dimacs_pg.graph
+        echo "---------- Join Graph: tw(H') ----------\n"
+        ../Triangulator/main -treewidth < ../dimacs_jg.graph
+        rm ../dimacs_pg.graph
     done
     exit 0
 fi
 
 ./run_project.sh "$@"
-../Triangulator/main -treewidth < ../dimacs.graph
+../Triangulator/main -treewidth <../dimacs_pg.graph

@@ -43,6 +43,17 @@ public class Table {
         return orgName;
     }
 
+    boolean containsTableColumn(Table tbar) {
+        for (Column c: this.getAllColumns()) {
+            for (Column tcol: tbar.getAllColumns()) {
+                if (c.getAlias() == tcol.getAlias()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         String res = name + "(";
