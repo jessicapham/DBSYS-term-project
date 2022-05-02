@@ -45,7 +45,7 @@ public class Schema {
     }
 
     public void addColumn(String c){
-        String[] csplit = c.split("\\.");
+        String[] csplit = c.split("[\\.\\_]");
 
         Table tab = getTable(csplit[0]);
         tab.addColumn(csplit[1]);

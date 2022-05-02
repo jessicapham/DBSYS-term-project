@@ -29,9 +29,11 @@ import net.sf.jsqlparser.expression.BinaryExpression;
 import net.sf.jsqlparser.expression.operators.relational.ComparisonOperator;
 import net.sf.jsqlparser.util.TablesNamesFinder;
 import java.io.File; 
-import java.io.FileNotFoundException; 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Scanner;
-
+import java.io.PrintWriter;  
 
 
 public class Main {
@@ -41,10 +43,16 @@ public class Main {
             String schemaString = readFile("../" + args[0]);
             String query = readFile("../" + args[1]);
 
+            if (args[1].contains("tpc-h")) {
+                Preprocessor preprocessor = new Preprocessor();
+                query = preprocessor.processTPCHQuery(query);
+                writeFile("../tpc-h/test.sql", query);
+            }
+
             traverseASTNodes(query, schemaString);
 	
 		} catch (Exception e) {
-			System.out.println(e);
+            e.printStackTrace();
 		}
 	}
 
@@ -64,6 +72,14 @@ public class Main {
         }
 
         return res;
+    }
+
+    public static void writeFile(String fp, String data) throws IOException, FileNotFoundException{
+        File file = new File(fp);
+        Writer wr = new PrintWriter(file);
+        wr.write(data);
+        wr.flush();
+        wr.close();
     }
 
     public static void traverseASTNodes(String sql, String schemaString) throws JSQLParserException, FileNotFoundException {
