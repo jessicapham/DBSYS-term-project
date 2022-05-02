@@ -75,10 +75,6 @@ public class Preprocessor {
         return query;
     }
 
-    String trim(String string) {
-        while (string.startsWith("--") or string.startsWith(":"))
-    }
-
     String getReplacementString(String string) {
         for (Map.Entry<String, String> entry : TPCH_TABLE_MAP.entrySet()) {
             String key = entry.getKey();
