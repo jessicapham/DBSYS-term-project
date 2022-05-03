@@ -59,8 +59,18 @@ if [[ "$BENCHMARK" != "" ]]; then
         echo "---------- Join Graph: tw(H') ----------\n"
         ../Triangulator/main -treewidth < ../dimacs_jg.graph 2>&1 | \
         while IFS= read line; do
-            if [[ "$line" == Treewidth* ]]; then 
+            if  [[ "$line" == Treewidth* ]]; then 
                 echo "tw(H') = ${line#'Treewidth: '}" >> $RESULTS
+            fi
+        done
+
+        echo "---------- Hypertree: hw(H) ----------\n"
+        ../newdetkdecomp/bin/detkdecomp 4 ../hypergraph.txt | \
+        while IFS= read line; do
+            if [[ "$line" == *hypertree-width:* ]]; then
+                hw=${line#*'hypertree-width: '}
+                hw=${hw%').'}
+                echo "hw(H) = $hw" >> $RESULTS
             fi
         done
 
