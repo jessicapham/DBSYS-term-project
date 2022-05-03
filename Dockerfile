@@ -7,7 +7,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-arm64
 RUN export JAVA_HOME
 
 ADD . /home
-
 WORKDIR /home
 
 RUN wget https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgrapht-1.5.1.tar.gz \
@@ -15,4 +14,4 @@ RUN wget https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/
 
 RUN cd ./JSqlParser/ && mvn package && cd ../
 RUN cd ./Triangulator/ && make && cd ../
-RUN cd ./newdetkdecomp/ && make && cd../
+RUN cd ./newdetkdecomp/ && make && cd ../
