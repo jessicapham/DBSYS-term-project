@@ -18,7 +18,7 @@ This repo contains our term project for the Database Systems course at UT Austin
 ```
 ### **Run**
 ```
-./benchmark.sh
+./treewidths.sh
 ```
 
 
