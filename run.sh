@@ -41,7 +41,7 @@ fi
 if [[ "$BENCHMARK" != "" ]]; then
     for FILE in $BENCHMARK; do
         echo "---------- Computing treewidth for query:" $FILE "----------"
-        ./run_project.sh "$SCHEMA" "$1/$FILE"
+        ./run_project.sh "$SCHEMA" "$1/$FILE" > res.log 2>&1
         echo "---------- Primal Graph: tw(H) ----------\n"
         ../Triangulator/main -treewidth < ../dimacs_pg.graph
         echo "---------- Join Graph: tw(H') ----------\n"

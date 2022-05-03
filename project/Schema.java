@@ -45,7 +45,7 @@ public class Schema {
     }
 
     public void addColumn(String c){
-        String[] csplit = c.split("[\\.\\_]");
+        String[] csplit = c.split("[\\.]");
 
         Table tab = getTable(csplit[0]);
         tab.addColumn(csplit[1]);
@@ -70,12 +70,20 @@ public class Schema {
         return cols;
     }
 
-    public void addAlias(String left, String right) {
-        String[] ls = left.split("\\.");
-        String[] rs = right.split("\\.");
+    public Boolean isString(String exp) {
+        return (exp.length() - exp.replaceAll("'","").length()) >= 2;
+    }
 
+    public void addAlias(String left, String right) {        
         try {
+            String[] ls = left.split("\\.");
+            String[] rs = right.split("\\.");
             Column lCol = getColumn(ls[0], ls[1]);
+
+            if (isString(right) || rs.length != 2) {
+                return;
+            }
+
             Column rCol = getColumn(rs[0], rs[1]);
             int lal = lCol.getAlias();
             int ral = rCol.getAlias();
