@@ -23,29 +23,47 @@ cd project/
 if [[ "$1" == "lsqb" ]]; then
     BENCHMARK="../lsqb/*.sql"
     SCHEMA="lsqb/schema.txt"
+    RESULTS="results_lsqb.txt"
 fi
 
 if [[ "$1" == "tpc-h" ]]; then
     BENCHMARK="../tpc-h/*.sql"
     SCHEMA="tpc-h/schema.txt"
-
+    RESULTS="results_tpc-h.txt"
 fi
 
 if [[ "$1" == "job" ]]; then
     BENCHMARK="../job/*.sql"
     SCHEMA="job/schema.txt"
-
+    RESULTS="results_job.txt"
 fi
 
 
 if [[ "$BENCHMARK" != "" ]]; then
+    if [ -f $RESULTS ]; then
+        rm $RESULTS
+    fi
     for FILE in $BENCHMARK; do
         echo "---------- Computing treewidth for query:" $FILE "----------"
+        echo "QUERY: " $FILE >> $RESULTS
         ./run_project.sh "$SCHEMA" "$1/$FILE" > res.log 2>&1
+
         echo "---------- Primal Graph: tw(H) ----------\n"
-        ../Triangulator/main -treewidth < ../dimacs_pg.graph
+        ../Triangulator/main -treewidth < ../dimacs_pg.graph 2>&1 | \
+        while IFS= read line; do
+            if [[ "$line" == Treewidth* ]]; then 
+                echo "tw(H) = ${line#'Treewidth: '}" >> $RESULTS
+            fi
+        done
+
         echo "---------- Join Graph: tw(H') ----------\n"
-        ../Triangulator/main -treewidth < ../dimacs_jg.graph
+        ../Triangulator/main -treewidth < ../dimacs_jg.graph 2>&1 | \
+        while IFS= read line; do
+            if [[ "$line" == Treewidth* ]]; then 
+                echo "tw(H') = ${line#'Treewidth: '}" >> $RESULTS
+            fi
+        done
+
         rm ../dimacs_pg.graph
     done
     exit 0
