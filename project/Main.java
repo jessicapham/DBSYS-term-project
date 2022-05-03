@@ -82,7 +82,7 @@ public class Main {
         wr.close();
     }
 
-    public static void traverseASTNodes(String sql, String schemaString) throws JSQLParserException, FileNotFoundException {
+    public static void traverseASTNodes(String sql, String schemaString) throws JSQLParserException, FileNotFoundException, IOException {
 
 
         SimpleNode node = (SimpleNode) CCJSqlParserUtil.parseAST(sql);
@@ -136,6 +136,7 @@ public class Main {
         sch.addMissingArgs(orgSchema);
         sch.genPrimalGraph();
         sch.genJoinGraph();
+        sch.genHyperGraph();
     }
 
     public static void createOrgSchema(Schema sch, String schemaString) {

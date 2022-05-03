@@ -37,6 +37,16 @@ cd Triangulator/
 make
 ```
 
+### **Install coinor-cbc**
+MacOS: `brew install coin-or-tools/coinor/cbc`
+Linux: `sudo apt-get install  coinor-cbc coinor-libcbc-dev`
+
+### **Build NewDetKDecomp Algos**
+```
+cd newdetkdecomp/
+make
+```
+
 # Usage
 From the root directory:
 ```

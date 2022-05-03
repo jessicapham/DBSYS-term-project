@@ -10,6 +10,7 @@ import org.jgrapht.nio.dimacs.*;
 public class Schema {
     final String FILE_PATH_PG = "../dimacs_pg.graph";
     final String FILE_PATH_JG = "../dimacs_jg.graph";
+    final String FILE_PATH_HG = "../hypergraph.txt";
     HashMap<String, Table> tables;
     int counter = 1;
 
@@ -216,6 +217,11 @@ public class Schema {
         graphExporter(g, FILE_PATH_JG);
     }
 
+    void genHyperGraph() throws FileNotFoundException, IOException {
+        String hypergraph = this.toString();
+        hypergraphExporter(hypergraph, FILE_PATH_HG);
+    }
+
     void graphExporter(Graph<String, DefaultEdge> g, String fp) throws FileNotFoundException {
         DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
 		File file = new File(fp);
@@ -223,12 +229,22 @@ public class Schema {
 		de.exportGraph(g, wr);
     }
 
+    void hypergraphExporter(String graph, String fp) throws FileNotFoundException, IOException {
+		File file = new File(fp);
+        Writer wr = new PrintWriter(file);
+		wr.write(graph);
+        wr.flush();
+        wr.close();
+    }
+
     @Override
     public String toString() {
         String res = "";
         for (Table t: tables.values()) {
-            res += t.toString() + "\n";
+            res += t.toString() + ",\n";
         }
+
+        res = res.replaceAll(",\n$", ".");
         return res;
     }
 }

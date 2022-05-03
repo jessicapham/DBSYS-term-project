@@ -58,7 +58,7 @@ public class Table {
 
     @Override
     public String toString() {
-        String res = name + "(";
+        String res = name + " (";
         Collection<Column> cols = columns.values();
         int i = 0;
         for (Column c: cols) {
