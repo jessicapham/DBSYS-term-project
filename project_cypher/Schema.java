@@ -8,7 +8,9 @@ import org.jgrapht.traverse.*;
 import org.jgrapht.nio.dimacs.*;
 
 public class Schema {
-    final String FILE_PATH = "../dimacs.graph";
+    final String FILE_PATH_PG = "../dimacs_pg.graph";
+    final String FILE_PATH_JG = "../dimacs_jg.graph";
+    final String FILE_PATH_HG = "../hypergraph.txt";
     HashMap<String, Table> tables;
     int counter = 1;
 
@@ -51,7 +53,7 @@ public class Schema {
         tab.addColumn(csplit[1]);
     }
 
-    void genPrimalGraph() {
+    void genPrimalGraph() throws FileNotFoundException {
         String[] rels = this.toString().split("\\n");
 		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
 
@@ -73,16 +75,25 @@ public class Schema {
 			System.out.println("edge: " + e);
         }
         
-        //System.out.println("\n============ DIMACS REPRESENTATION ============\n");
-        // System.out.println("See " + FILE_PATH + "\n");
+        graphExporter(g, FILE_PATH_PG);
+    }
 
-        // DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
-		// File file = new File(FILE_PATH);
-        // Writer wr = new PrintWriter(file);
-		// de.exportGraph(g, wr);
+    void genJoinGraph() throws FileNotFoundException {
+		Graph<String, DefaultEdge> g = new DefaultUndirectedGraph<>(DefaultEdge.class);
 
-        
-        
+        for (Table t: tables.values()) {
+            for (Table tbar: tables.values()) {
+                if (t.getName() == tbar.getName()) continue;
+
+                if (t.containsTableColumn(tbar)) {
+                    g.addVertex(t.getName().strip());
+				    g.addVertex(tbar.getName().strip());
+				    g.addEdge(t.getName(), tbar.getName());
+                }
+            }
+        }
+
+        graphExporter(g, FILE_PATH_JG);
     }
 
     void addVertices(String r, Graph<String, DefaultEdge> g) {
@@ -97,12 +108,33 @@ public class Schema {
 		}
 	}
 
+    void genHyperGraph() throws FileNotFoundException, IOException {
+        String hypergraph = this.toString();
+        hypergraphExporter(hypergraph, FILE_PATH_HG);
+    }
+
+    void hypergraphExporter(String graph, String fp) throws FileNotFoundException, IOException {
+		File file = new File(fp);
+        Writer wr = new PrintWriter(file);
+		wr.write(graph);
+        wr.flush();
+        wr.close();
+    }
+
+    void graphExporter(Graph<String, DefaultEdge> g, String fp) throws FileNotFoundException {
+        DIMACSExporter<String, DefaultEdge> de = new DIMACSExporter<String, DefaultEdge>();
+		File file = new File(fp);
+        Writer wr = new PrintWriter(file);
+		de.exportGraph(g, wr);
+    }
+
     @Override
     public String toString() {
         String res = "";
         for (Table t: tables.values()) {
-            res += t.toString() + "\n";
+            res += t.toString() + ",\n";
         }
+        res = res.replaceAll(",\n$", ".");
         return res;
     }
 }

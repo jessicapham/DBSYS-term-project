@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.File; 
-import java.io.FileNotFoundException; 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import org.opencypher.v9_0.ast.factory.neo4j.JavaCCParser;
 import org.opencypher.v9_0.util.OpenCypherExceptionFactory;
@@ -32,7 +33,7 @@ public class Main {
             String query6 = "MATCH (:Tag)<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]-( creator:Person) OPTIONAL MATCH (message)<-[:LIKES]-(liker:Person) OPTIONAL MATCH (message)<-[:REPLY_OF]-(comment:Comment) RETURN count(*) AS count";
             String query7Broken = "MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF ]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag) WHERE NOT (comment)-[:HAS_TAG]->(tag1) AND tag1 <> tag2 RETURN count(*) AS count";
             
-            traverseASTNodes(query7Broken);
+            traverseASTNodes(query1);
 
 	
 		} catch (Exception e) {
@@ -58,7 +59,7 @@ public class Main {
         return res;
     }
 
-    public static void traverseASTNodes(String query) {
+    public static void traverseASTNodes(String query) throws FileNotFoundException, IOException {
         Schema sch = new Schema();
         Statement stmt = JavaCCParser.parse(query, new OpenCypherExceptionFactory(Option.apply(null)), new AnonymousVariableNameGenerator());
 
@@ -106,6 +107,8 @@ public class Main {
             }
         }
         sch.genPrimalGraph();
+        sch.genJoinGraph();
+        sch.genHyperGraph();
     }
 }
 

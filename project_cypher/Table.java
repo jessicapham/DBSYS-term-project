@@ -31,6 +31,21 @@ public class Table {
         return name;
     }
 
+    Collection<Column> getAllColumns() {
+        return columns.values();
+    }
+
+    boolean containsTableColumn(Table tbar) {
+        for (Column c: this.getAllColumns()) {
+            for (Column tcol: tbar.getAllColumns()) {
+                if (c.getName().equals(tcol.getName())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         String res = name + "(";
