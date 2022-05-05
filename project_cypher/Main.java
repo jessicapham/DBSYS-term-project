@@ -25,16 +25,9 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		try { 
-            String query1 = "MATCH (:Country)<-[:IS_PART_OF]-(:City)<-[:IS_LOCATED_IN]-(:Person)<-[:HAS_MEMBER]-(:Forum)-[:CONTAINER_OF]->(:Post)<-[:REPLY_OF]-(:Comment)-[:HAS_TAG]->(:Tag)-[:HAS_TYPE]->(:TagClass) RETURN count(*) AS count";
-            String query2 = "MATCH (person1:Person)-[:KNOWS]-(person2:Person), (person1)<-[:HAS_CREATOR]-(comment:Comment)-[:REPLY_OF]->(post:Post)-[:HAS_CREATOR]->(person2) RETURN count(*) AS count";
-            String query3 = "MATCH (person1:Person)-[:IS_LOCATED_IN]->(city1:City)-[:IS_PART_OF]->(country) MATCH (person2:Person)-[:IS_LOCATED_IN]->(city2:City)-[:IS_PART_OF]->(country) MATCH (person3:Person)-[:IS_LOCATED_IN]->(city3:City)-[:IS_PART_OF]->(country) MATCH (person1)-[:KNOWS]-(person2)-[:KNOWS]-(person3)-[:KNOWS]-(person1) RETURN count(*) AS count";
-            String query4 = "MATCH (:Tag)<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]-( creator:Person), (message)<-[:LIKES]-(liker:Person), (message)<-[:REPLY_OF]-(comment:Comment) RETURN count(*) AS count";
-            String query5Broken = "MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF ]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag) WHERE tag1 <> tag2 RETURN count(*) AS count";
-            String query6 = "MATCH (:Tag)<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]-( creator:Person) OPTIONAL MATCH (message)<-[:LIKES]-(liker:Person) OPTIONAL MATCH (message)<-[:REPLY_OF]-(comment:Comment) RETURN count(*) AS count";
-            String query7Broken = "MATCH (tag1:Tag)<-[:HAS_TAG]-(message:Message)<-[:REPLY_OF ]-(comment:Comment)-[:HAS_TAG]->(tag2:Tag) WHERE NOT (comment)-[:HAS_TAG]->(tag1) AND tag1 <> tag2 RETURN count(*) AS count";
-            
-            traverseASTNodes(query1);
+            String query = readFile("../" + args[0]);
 
+            traverseASTNodes(query);
 	
 		} catch (Exception e) {
 			System.out.println(e);
@@ -106,6 +99,7 @@ public class Main {
                 createdTable.addColumn(col2);
             }
         }
+
         sch.genPrimalGraph();
         sch.genJoinGraph();
         sch.genHyperGraph();

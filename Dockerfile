@@ -12,6 +12,10 @@ WORKDIR /home
 RUN wget https://sourceforge.net/projects/jgrapht/files/JGraphT/Version%201.5.1/jgrapht-1.5.1.tar.gz \
     && tar -xvzf jgrapht-1.5.1.tar.gz
 
+RUN wget https://downloads.lightbend.com/scala/2.13.8/scala-2.13.8.tgz \
+    && tar -xvzf scala-2.13.8.tgz 
+
 RUN cd ./JSqlParser/ && mvn package && cd ../
+RUN cd ./front-end/ && mvn package && cd ../
 RUN cd ./Triangulator/ && make && cd ../
 RUN cd ./newdetkdecomp/ && make && cd ../

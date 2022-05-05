@@ -1,7 +1,7 @@
-IS_LOCATED_IN(City, Person),
-HAS_MEMBER(Person, Forum),
-HAS_TYPE(Tag, TagClass),
-CONTAINER_OF(Post, Forum),
-REPLY_OF(Comment, Post),
-IS_PART_OF(Country, City),
-HAS_TAG(Comment, Tag).
+IS_LOCATED_IN (0, 0)
+HAS_MEMBER (0, 0)
+HAS_TYPE (0, 0)
+CONTAINER_OF (0, 0)
+REPLY_OF (0, 0)
+IS_PART_OF (0, 0)
+HAS_TAG (0, 0)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chmod +x ./project/run_project.sh
+chmod +x ./project_cypher/run_project.sh
 
 if [ -f "dimacs_pg.graph" ]; then
     rm dimacs_pg.graph
@@ -18,24 +18,12 @@ fi
 BENCHMARK=""
 SCHEMA=""
 
-cd project/
+cd project_cypher/
 
 if [[ "$1" == "lsqb" ]]; then
-    BENCHMARK="../lsqb/*.sql"
+    BENCHMARK="../lsqb/*.cypher"
     SCHEMA="lsqb/schema.txt"
     RESULTS="results_lsqb.txt"
-fi
-
-if [[ "$1" == "tpc-h" ]]; then
-    BENCHMARK="../tpc-h/*.sql"
-    SCHEMA="tpc-h/schema.txt"
-    RESULTS="results_tpc-h.txt"
-fi
-
-if [[ "$1" == "job" ]]; then
-    BENCHMARK="../job/*.sql"
-    SCHEMA="job/schema.txt"
-    RESULTS="results_job.txt"
 fi
 
 
@@ -80,4 +68,8 @@ if [[ "$BENCHMARK" != "" ]]; then
 fi
 
 ./run_project.sh "$@"
+echo "Computing tw(H)..."
 ../Triangulator/main -treewidth <../dimacs_pg.graph
+
+echo "Computing tw(H')..."
+../Triangulator/main -treewidth <../dimacs_jg.graph

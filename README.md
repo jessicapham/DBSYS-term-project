@@ -10,6 +10,12 @@ This repo contains our term project for the Database Systems course at UT Austin
 ## Requirements
 - Docker
 
+## Prerequisites
+Fetch all the data from submodules
+```
+git submodule update --init --recursive
+```
+
 # Computing Tree Widths
 
 ### **Build Docker image**
