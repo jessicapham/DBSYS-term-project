@@ -27,7 +27,6 @@ git submodule update --init --recursive
 ./treewidths.sh
 ```
 
-
 # Miscellaneous
 ## Git Submodules
 This project uses code from other Git repositories. Git submodules is used to keep a git repository as a subdirectory of another git repository. 
@@ -36,6 +35,7 @@ This project uses code from other Git repositories. Git submodules is used to ke
 - JSQLParser
 - Triangulator
 - newdetkdecomp
+- Cypher Front End Modules
 
 ### To add a submodule:
 ```

@@ -1,16 +1,18 @@
 
 ============ RENAMED ARGS ============
 
-KNOWS_(person3, person2),
-KNOWS(person2, person1),
-HAS_INTEREST(person3, tag).
+REPLY_OF(c, m),
+HAS_CREATOR(p, c),
+HAS_CREATOR_(a, m),
+KNOWS(p, a).
 
 ============ PRIMAL GRAPH ============
 
-vertex: person3
-vertex: person2
-vertex: person1
-vertex: tag
-edge: (person3 : person2)
-edge: (person2 : person1)
-edge: (person3 : tag)
+vertex: c
+vertex: m
+vertex: p
+vertex: a
+edge: (c : m)
+edge: (p : c)
+edge: (a : m)
+edge: (p : a)

@@ -1,3 +1,4 @@
-KNOWS_(person3, person2),
-KNOWS(person2, person1),
-HAS_INTEREST(person3, tag).
+REPLY_OF(c, m),
+HAS_CREATOR(p, c),
+HAS_CREATOR_(a, m),
+KNOWS(p, a).

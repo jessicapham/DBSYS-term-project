@@ -25,6 +25,11 @@ if [[ "$1" == "lsqb" ]]; then
     RESULTS="results_lsqb.txt"
 fi
 
+if [[ "$1" == "ldbc" ]]; then
+    BENCHMARK="../ldbc/*.cypher"
+    RESULTS="results_ldbc.txt"
+fi
+
 
 if [[ "$BENCHMARK" != "" ]]; then
     if [ -f $RESULTS ]; then
