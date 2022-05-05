@@ -1,2 +1,3 @@
-edge9(b, n),
-edge10(a, n).
+KNOWS_(person3, person2),
+KNOWS(person2, person1),
+HAS_INTEREST(person3, tag).
