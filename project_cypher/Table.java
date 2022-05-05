@@ -13,20 +13,18 @@ public class Table {
         columns = new HashMap<String, Column>();
     }
 
-    public Column addColumn(String c) {
-        if (columns.get(c) != null) return columns.get(c);
+    public void addColumn(String c) {
+        if (columns.get(c) != null) return;
 
         Column col = new Column(c);
         columns.put(c, col);
-
-        return col;
     }
 
     public Column getColumn(String c) throws Exception {
         Column col = columns.get(c);
         if(col != null) return col;
 
-        return addColumn(c);
+        throw new Exception("Col: " + c + " does not belong to table " + name);
     }
 
     String getName() {
@@ -50,11 +48,11 @@ public class Table {
 
     @Override
     public String toString() {
-        String res = name + " (";
+        String res = name + "(";
         Collection<Column> cols = columns.values();
         int i = 0;
         for (Column c: cols) {
-            res += c.getAlias();
+            res += c.getName();
             if(i++ != cols.size() - 1) res += ", ";
         }
         res += ")";

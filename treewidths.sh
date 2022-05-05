@@ -2,7 +2,7 @@
 
 echo "Running benchmarks for SQL queries..."
 docker run -it db-project sh -c "./run_sql.sh lsqb && \\
-                            ./run.sh job && \\
+                            ./run_sql.sh job && \\
                             echo 'BENCHMARK RESULTS FOR LSQB' && \\
                             cat project_sql/results_lsqb.txt && \\
                             echo 'BENCHMARK RESULTS FOR JOB' && \\

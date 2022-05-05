@@ -1,0 +1,16 @@
+
+============ RENAMED ARGS ============
+
+KNOWS_(person3, person2),
+KNOWS(person2, person1),
+HAS_INTEREST(person3, tag).
+
+============ PRIMAL GRAPH ============
+
+vertex: person3
+vertex: person2
+vertex: person1
+vertex: tag
+edge: (person3 : person2)
+edge: (person2 : person1)
+edge: (person3 : tag)

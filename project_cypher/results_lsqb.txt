@@ -1,27 +1,27 @@
 QUERY:  ../lsqb/q1.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 1
 QUERY:  ../lsqb/q2.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 2
+tw(H') = 2
 QUERY:  ../lsqb/q3.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 2
+tw(H') = 2
 QUERY:  ../lsqb/q4.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 3
 QUERY:  ../lsqb/q5-broken.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 1
 QUERY:  ../lsqb/q6.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 1
 QUERY:  ../lsqb/q7-broken.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 3
 QUERY:  ../lsqb/q8.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 1
 QUERY:  ../lsqb/q9.cypher
-tw(H) = 0
-tw(H') = 6
+tw(H) = 1
+tw(H') = 1

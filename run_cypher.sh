@@ -22,7 +22,6 @@ cd project_cypher/
 
 if [[ "$1" == "lsqb" ]]; then
     BENCHMARK="../lsqb/*.cypher"
-    SCHEMA="lsqb/schema.txt"
     RESULTS="results_lsqb.txt"
 fi
 
@@ -34,7 +33,7 @@ if [[ "$BENCHMARK" != "" ]]; then
     for FILE in $BENCHMARK; do
         echo "---------- Computing treewidth for query:" $FILE "----------"
         echo "QUERY: " $FILE >> $RESULTS
-        ./run_project.sh "$SCHEMA" "$1/$FILE" > res.log 2>&1
+        ./run_project.sh "$1/$FILE" > res.log 2>&1
 
         echo "---------- Primal Graph: tw(H) ----------\n"
         ../Triangulator/main -treewidth < ../dimacs_pg.graph 2>&1 | \

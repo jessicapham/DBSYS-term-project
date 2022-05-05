@@ -17,5 +17,5 @@ RUN wget https://downloads.lightbend.com/scala/2.13.8/scala-2.13.8.tgz \
 
 RUN cd ./JSqlParser/ && mvn package && cd ../
 RUN cd ./front-end/ && mvn package && cd ../
-RUN cd ./Triangulator/ && make && cd ../
-RUN cd ./newdetkdecomp/ && make && cd ../
+RUN cd ./Triangulator/ && make clean && make && cd ../
+RUN cd ./newdetkdecomp/ && make clean && make && cd ../

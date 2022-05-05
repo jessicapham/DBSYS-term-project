@@ -1,7 +1,2 @@
-IS_LOCATED_IN (0, 0)
-HAS_MEMBER (0, 0)
-HAS_TYPE (0, 0)
-CONTAINER_OF (0, 0)
-REPLY_OF (0, 0)
-IS_PART_OF (0, 0)
-HAS_TAG (0, 0)
+edge9(b, n),
+edge10(a, n).
