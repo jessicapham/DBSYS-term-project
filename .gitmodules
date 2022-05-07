@@ -1,12 +1,6 @@
-[submodule "JSqlParser"]
-	path = JSqlParser
-	url = https://github.com/JSQLParser/JSqlParser.git
 [submodule "Triangulator"]
 	path = Triangulator
 	url = https://github.com/Laakeri/Triangulator.git
-[submodule "front-end"]
-	path = front-end
-	url = https://github.com/opencypher/front-end.git
 [submodule "newdetkdecomp"]
 	path = newdetkdecomp
 	url = https://github.com/TUfischl/newdetkdecomp.git
