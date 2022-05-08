@@ -1,6 +1,3 @@
 [submodule "Triangulator"]
 	path = Triangulator
 	url = https://github.com/Laakeri/Triangulator.git
-[submodule "newdetkdecomp"]
-	path = newdetkdecomp
-	url = https://github.com/TUfischl/newdetkdecomp.git

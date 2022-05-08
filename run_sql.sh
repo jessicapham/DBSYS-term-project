@@ -65,7 +65,7 @@ if [[ "$BENCHMARK" != "" ]]; then
         done
 
         echo "---------- Hypertree: hw(H) ----------\n"
-        ../newdetkdecomp/bin/detkdecomp 4 ../hypergraph.txt | \
+        ../hwh/detkdecomp 4 ../hypergraph.txt | \
         while IFS= read line; do
             if [[ "$line" == *hypertree-width:* ]]; then
                 hw=${line#*'hypertree-width: '}

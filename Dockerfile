@@ -11,4 +11,3 @@ ADD . /home
 WORKDIR /home
 
 RUN cd ./Triangulator/ && make clean && make && cd ../
-RUN cd ./newdetkdecomp/ && make clean && make && cd ../
