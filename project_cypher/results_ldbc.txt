@@ -1,58 +1,78 @@
 QUERY:  ../ldbc/interactive-complex-1.cypher
 tw(H) = 1
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-10.cypher
 tw(H) = 1
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-11.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-12.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-13.cypher
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-14.cypher
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-2.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 2 for k = 1
 QUERY:  ../ldbc/interactive-complex-3.cypher
 tw(H) = 2
 tw(H') = 2
+hw(H) = 2 for k = 2
 QUERY:  ../ldbc/interactive-complex-4.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-5.cypher
 tw(H) = 2
 tw(H') = 2
+hw(H) = 3 for k = 2
 QUERY:  ../ldbc/interactive-complex-6.cypher
 tw(H) = 1
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-7.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 2 for k = 1
 QUERY:  ../ldbc/interactive-complex-8.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-9.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 2 for k = 1
 QUERY:  ../ldbc/interactive-short-1.cypher
 tw(H) = 1
 tw(H') = 0
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-short-2.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-short-3.cypher
 tw(H) = 1
 tw(H') = 0
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-short-5.cypher
 tw(H) = 1
 tw(H') = 0
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-short-6.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-short-7.cypher
 tw(H) = 2
 tw(H') = 2
+hw(H) = 3 for k = 2

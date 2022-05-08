@@ -49,7 +49,7 @@ if [[ "$BENCHMARK" != "" ]]; then
         ./run_project.sh "$SCHEMA" "$1/$FILE" > res.log 2>&1
 
         echo "---------- Primal Graph: tw(H) ----------\n"
-        ../twh/main -treewidth < ../dimacs_pg.graph 2>&1 | \
+        ../Triangulator/main -treewidth < ../dimacs_pg.graph 2>&1 | \
         while IFS= read line; do
             if [[ "$line" == Treewidth* ]]; then 
                 echo "tw(H) = ${line#'Treewidth: '}" >> $RESULTS
@@ -57,7 +57,7 @@ if [[ "$BENCHMARK" != "" ]]; then
         done
 
         echo "---------- Join Graph: tw(H') ----------\n"
-        ../twh/main -treewidth < ../dimacs_jg.graph 2>&1 | \
+        ../Triangulator/main -treewidth < ../dimacs_jg.graph 2>&1 | \
         while IFS= read line; do
             if  [[ "$line" == Treewidth* ]]; then 
                 echo "tw(H') = ${line#'Treewidth: '}" >> $RESULTS
@@ -65,13 +65,20 @@ if [[ "$BENCHMARK" != "" ]]; then
         done
 
         echo "---------- Hypertree: hw(H) ----------\n"
-        ../hwh/detkdecomp 4 ../hypergraph.txt | \
-        while IFS= read line; do
-            if [[ "$line" == *hypertree-width:* ]]; then
-                hw=${line#*'hypertree-width: '}
-                hw=${hw%').'}
-                echo "hw(H) = $hw" >> $RESULTS
-            fi
+        K=1
+        FOUND=false
+        while [ $FOUND == "false" ]; do
+            while IFS= read line; do
+                if [[ "$line" == 'Hypertree of width'*'not found'* ]]; then
+                    break
+                elif [[ "$line" == *hypertree-width:* ]]; then
+                    hw=${line#*'hypertree-width: '}
+                    hw=${hw%').'}
+                    echo "hw(H) = $hw for k = $K" >> $RESULTS
+                    FOUND=true
+                fi
+            done <<<$( ../newdetkdecomp/bin/detkdecomp $K ../hypergraph.txt  2>&1)
+            (( K++ ))
         done
 
         rm ../dimacs_pg.graph
@@ -80,4 +87,4 @@ if [[ "$BENCHMARK" != "" ]]; then
 fi
 
 ./run_project.sh "$@"
-../twh/main -treewidth <../dimacs_pg.graph
+../Triangulator/main -treewidth <../dimacs_pg.graph

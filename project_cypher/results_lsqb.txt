@@ -1,27 +1,36 @@
 QUERY:  ../lsqb/q1.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q2.cypher
 tw(H) = 2
 tw(H') = 2
+hw(H) = 3 for k = 2
 QUERY:  ../lsqb/q3.cypher
 tw(H) = 2
 tw(H') = 2
+hw(H) = 2 for k = 2
 QUERY:  ../lsqb/q4.cypher
 tw(H) = 1
 tw(H') = 3
-QUERY:  ../lsqb/q5-broken.cypher
+hw(H) = 1 for k = 1
+QUERY:  ../lsqb/q5.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q6.cypher
 tw(H) = 1
 tw(H') = 1
-QUERY:  ../lsqb/q7-broken.cypher
+hw(H) = 1 for k = 1
+QUERY:  ../lsqb/q7.cypher
 tw(H) = 1
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q8.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q9.cypher
 tw(H) = 1
 tw(H') = 1
+hw(H) = 1 for k = 1

@@ -1,27 +1,36 @@
 QUERY:  ../lsqb/q1.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q2.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 2 for k = 2
 QUERY:  ../lsqb/q3.sql
 tw(H) = 3
 tw(H') = 4
+hw(H) = 2 for k = 2
 QUERY:  ../lsqb/q4.sql
 tw(H) = 1
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q5.sql
 tw(H) = 2
 tw(H') = 2
+hw(H) = 2 for k = 2
 QUERY:  ../lsqb/q6.sql
 tw(H) = 1
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q7.sql
 tw(H) = 1
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../lsqb/q8.sql
 tw(H) = 2
 tw(H') = 3
+hw(H) = 3 for k = 2
 QUERY:  ../lsqb/q9.sql
 tw(H) = 1
 tw(H') = 3
+hw(H) = 1 for k = 1

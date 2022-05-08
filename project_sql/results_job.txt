@@ -1,339 +1,452 @@
 QUERY:  ../job/10a.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/10b.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/10c.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/11a.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/11b.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/11c.sql
 tw(H) = 3
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/11d.sql
 tw(H) = 3
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/12a.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/12b.sql
 tw(H) = 6
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/12c.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/13a.sql
 tw(H) = 6
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/13b.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/13c.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/13d.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/14a.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/14b.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/14c.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/15a.sql
 tw(H) = 11
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/15b.sql
 tw(H) = 11
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/15c.sql
 tw(H) = 11
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/15d.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/16a.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/16b.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/16c.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/16d.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17a.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17b.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17c.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17d.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17e.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/17f.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/18a.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/18b.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/18c.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/19a.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/19b.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/19c.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/19d.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/1a.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/1b.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/1c.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/1d.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/20a.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/20b.sql
 tw(H) = 8
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/20c.sql
 tw(H) = 6
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/21a.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/21b.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/21c.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/22a.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/22b.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/22c.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/22d.sql
 tw(H) = 4
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/23a.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/23b.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/23c.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/24a.sql
 tw(H) = 7
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/24b.sql
 tw(H) = 7
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/25a.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/25b.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/25c.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/26a.sql
 tw(H) = 6
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/26b.sql
 tw(H) = 8
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/26c.sql
 tw(H) = 8
 tw(H') = 4
+hw(H) = 1 for k = 1
 QUERY:  ../job/27a.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/27b.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/27c.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/28a.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/28b.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/28c.sql
 tw(H) = 4
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/29a.sql
 tw(H) = 7
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/29b.sql
 tw(H) = 7
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/29c.sql
 tw(H) = 7
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/2a.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/2b.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/2c.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/2d.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/30a.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/30b.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/30c.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/31a.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/31b.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/31c.sql
 tw(H) = 6
 tw(H') = 5
+hw(H) = 1 for k = 1
 QUERY:  ../job/32a.sql
 tw(H) = 3
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/32b.sql
 tw(H) = 3
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/33a.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/33b.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/33c.sql
 tw(H) = 4
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/3a.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/3b.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/3c.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/4a.sql
 tw(H) = 2
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/4b.sql
 tw(H) = 2
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/4c.sql
 tw(H) = 2
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/5a.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/5b.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/5c.sql
 tw(H) = 4
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6a.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6b.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6c.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6d.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6e.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/6f.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/7a.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/7b.sql
 tw(H) = 7
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/7c.sql
 tw(H) = 11
 tw(H') = 3
+hw(H) = 1 for k = 1
 QUERY:  ../job/8a.sql
 tw(H) = 8
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/8b.sql
 tw(H) = 8
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/8c.sql
 tw(H) = 8
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/8d.sql
 tw(H) = 8
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/9a.sql
 tw(H) = 8
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/9b.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/9c.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
 QUERY:  ../job/9d.sql
 tw(H) = 6
 tw(H') = 2
+hw(H) = 1 for k = 1
