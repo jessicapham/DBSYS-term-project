@@ -9,5 +9,3 @@ RUN export JAVA_HOME
 
 ADD . /home
 WORKDIR /home
-
-RUN cd ./Triangulator/ && make clean && make && cd ../

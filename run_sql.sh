@@ -49,7 +49,7 @@ if [[ "$BENCHMARK" != "" ]]; then
         ./run_project.sh "$SCHEMA" "$1/$FILE" > res.log 2>&1
 
         echo "---------- Primal Graph: tw(H) ----------\n"
-        ../Triangulator/main -treewidth < ../dimacs_pg.graph 2>&1 | \
+        ../twh/main -treewidth < ../dimacs_pg.graph 2>&1 | \
         while IFS= read line; do
             if [[ "$line" == Treewidth* ]]; then 
                 echo "tw(H) = ${line#'Treewidth: '}" >> $RESULTS
@@ -57,7 +57,7 @@ if [[ "$BENCHMARK" != "" ]]; then
         done
 
         echo "---------- Join Graph: tw(H') ----------\n"
-        ../Triangulator/main -treewidth < ../dimacs_jg.graph 2>&1 | \
+        ../twh/main -treewidth < ../dimacs_jg.graph 2>&1 | \
         while IFS= read line; do
             if  [[ "$line" == Treewidth* ]]; then 
                 echo "tw(H') = ${line#'Treewidth: '}" >> $RESULTS
@@ -80,4 +80,4 @@ if [[ "$BENCHMARK" != "" ]]; then
 fi
 
 ./run_project.sh "$@"
-../Triangulator/main -treewidth <../dimacs_pg.graph
+../twh/main -treewidth <../dimacs_pg.graph
