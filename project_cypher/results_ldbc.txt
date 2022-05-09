@@ -14,12 +14,6 @@ QUERY:  ../ldbc/interactive-complex-12.cypher
 tw(H) = 1
 tw(H') = 1
 hw(H) = 1 for k = 1
-QUERY:  ../ldbc/interactive-complex-13.cypher
-tw(H') = 1
-hw(H) = 1 for k = 1
-QUERY:  ../ldbc/interactive-complex-14.cypher
-tw(H') = 1
-hw(H) = 1 for k = 1
 QUERY:  ../ldbc/interactive-complex-2.cypher
 tw(H) = 1
 tw(H') = 1
