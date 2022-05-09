@@ -1,0 +1,12 @@
+QUERY:  ../tpc-h/10-clean.sql
+tw(H) = 15
+tw(H') = 1
+hw(H) = 1 for k = 1
+QUERY:  ../tpc-h/3-clean.sql
+tw(H) = 15
+tw(H') = 1
+hw(H) = 1 for k = 1
+QUERY:  ../tpc-h/5-clean.sql
+tw(H) = 15
+tw(H') = 2
+hw(H) = 2 for k = 2

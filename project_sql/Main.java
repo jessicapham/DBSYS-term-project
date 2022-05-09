@@ -46,7 +46,6 @@ public class Main {
             if (args[1].contains("tpc-h")) {
                 Preprocessor preprocessor = new Preprocessor();
                 query = preprocessor.processTPCHQuery(query);
-                writeFile("../tpc-h/test.sql", query);
             }
 
             traverseASTNodes(query, schemaString);
