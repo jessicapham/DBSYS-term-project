@@ -48,6 +48,8 @@ public class Schema {
     public void addColumn(String c){
         String[] csplit = c.split("[\\.]");
 
+        if (csplit.length == 1) return; //column is aliased
+
         Table tab = getTable(csplit[0]);
         tab.addColumn(csplit[1]);
     }
