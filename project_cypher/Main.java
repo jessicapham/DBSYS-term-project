@@ -24,14 +24,9 @@ import scala.collection.Seq;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		try { 
-            String query = readFile("../" + args[0]);
+        String query = readFile("../" + args[0]);
 
-            traverseASTNodes(query);
-	
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+        traverseASTNodes(query);
 	}
 
     public static String readFile(String fname) {
