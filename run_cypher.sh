@@ -20,27 +20,21 @@ SCHEMA=""
 
 cd project_cypher/
 
-if [[ "$1" == "lsqb" ]]; then
-    BENCHMARK="../lsqb/*.cypher"
-    RESULTS="results_lsqb.txt"
-fi
-
-if [[ "$1" == "ldbc" ]]; then
-    BENCHMARK="../ldbc/*.cypher"
-    RESULTS="results_ldbc.txt"
-fi
-
+BENCHMARK="../$1/*.cypher"
+RESULTS="results_$1.txt"
 
 if [[ "$BENCHMARK" != "" ]]; then
     if [ -f $RESULTS ]; then
         rm $RESULTS
     fi
+    COUNTER=1
+    TOTAL=$(ls -l $BENCHMARK | wc -l)
+    echo "Benchmark: $1"
     for FILE in $BENCHMARK; do
-        echo "---------- Computing treewidth for query:" $FILE "----------"
         echo "QUERY: " $FILE >> $RESULTS
+        echo -ne "$COUNTER / $TOTAL \r"
         ./run_project.sh "$1/$FILE" > res.log 2>&1
 
-        echo "---------- Primal Graph: tw(H) ----------\n"
         ../Triangulator/main -treewidth < ../dimacs_pg.graph 2>&1 | \
         while IFS= read line; do
             if [[ "$line" == Treewidth* ]]; then 
@@ -48,7 +42,6 @@ if [[ "$BENCHMARK" != "" ]]; then
             fi
         done
 
-        echo "---------- Join Graph: tw(H') ----------\n"
          ../Triangulator/main -treewidth < ../dimacs_jg.graph 2>&1 | \
         while IFS= read line; do
             if  [[ "$line" == Treewidth* ]]; then 
@@ -56,7 +49,6 @@ if [[ "$BENCHMARK" != "" ]]; then
             fi
         done
 
-        echo "---------- Hypertree: hw(H) ----------\n"
         K=1
         FOUND=false
         while [ $FOUND == "false" ]; do
@@ -72,9 +64,10 @@ if [[ "$BENCHMARK" != "" ]]; then
             done <<<$( ../newdetkdecomp/bin/detkdecomp $K ../hypergraph.txt  2>&1)
             (( K++ ))
         done
-
+        COUNTER=$((COUNTER+1))
         rm ../dimacs_pg.graph
     done
+    echo $'\n'
     exit 0
 fi
 
