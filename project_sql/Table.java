@@ -13,6 +13,14 @@ public class Table {
         columns = new HashMap<String, Column>();
     }
 
+    public void setAliased(Boolean a) {
+        this.aliased = a;
+    }
+
+    public void setOrgName(String o) {
+        orgName = o;
+    }
+
     public Column addColumn(String c) {
         if (columns.get(c) != null) return columns.get(c);
 

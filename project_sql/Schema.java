@@ -30,7 +30,14 @@ public class Schema {
             tabName = t;
         }
 
-        if (tables.get(tabName) != null) return;
+        if (tables.get(tabName) != null) {
+            if (tsplit.length == 2) {
+                Table temp = tables.get(tabName);
+                temp.setAliased(true);
+                temp.setOrgName(orgName);
+            }
+            return;
+        }
         
         Table tab = new Table(tabName, tsplit.length == 2, orgName);
 
@@ -122,6 +129,7 @@ public class Schema {
         for (Table t: tabs) {
             String orgTabName = t.getName();
             if (t.isAliased()) orgTabName = t.getOrgTableName();
+            // System.out.println(orgTabName);
 
             for (Column c: sch.getAllTableColumns(orgTabName)){
                 t.addColumn(c.getName());
